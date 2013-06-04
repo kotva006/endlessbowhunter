@@ -1,0 +1,6 @@
+*.opensdf
+*.sdf
+*.sln
+*.v11.suo
+*.vcxproj*
+Settings.h
