@@ -7,8 +7,13 @@ const std::string ARROW_PATH   = PICTURE_PATH + "\\Arrows";
 const std::string ANIMAL_PATH  = PICTURE_PATH + "\\Animals";
 const std::string PERSON_PATH  = PICTURE_PATH + "\\Person";
 
+
+//  Game Values
 int WINDOW_X = 800;
 int WINDOW_Y = 800;
 const std::string WINDOW_TITLE = "Endless Bow Hunter Experience";
+
+// Person Values
+int BASE_MOVE_SPEED = 2;
 
 
