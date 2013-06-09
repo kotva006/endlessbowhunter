@@ -16,6 +16,8 @@ bool REDRAW  = true;
 const std::string WINDOW_TITLE = "Endless Bow Hunter Experience";
 const int personCenterX = 25;
 const int personCenterY = 25;
+const float crossHairCenterX = 2.5;
+const float crossHairCenterY = 2.5;
 const int arrowCenterX  = 5;
 const int arrowCenterY  = 8;
 const int animal_1CenterX = 25;
@@ -46,6 +48,7 @@ sf::Font scoreFont;
 // Texts
 
 sf::Text scoreText;
+int scoreFontSize = 20;
 
 // Time
 
@@ -97,7 +100,7 @@ Initialize *initialize() {
 	person.setPosition(sf::Vector2f(WINDOW_X/2, WINDOW_Y-(personCenterY)));
 	
 	crossHair.setTexture(crossHairTexture);
-	crossHair.setOrigin(sf::Vector2f(25,25));
+	crossHair.setOrigin(sf::Vector2f(crossHairCenterX,crossHairCenterY));
 	crossHair.setPosition(sf::Vector2f(WINDOW_X/2,WINDOW_Y/2));
 
 	arrow.setTexture(arrowTexture);
@@ -109,7 +112,7 @@ Initialize *initialize() {
 	scoreText.setFont(scoreFont);
 	scoreText.setPosition(5,5);
 	scoreText.setColor(sf::Color::White);
-	scoreText.setCharacterSize(20);
+	scoreText.setCharacterSize(scoreFontSize);
 
 
 	init->status = true;
