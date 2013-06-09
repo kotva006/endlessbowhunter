@@ -1,19 +1,71 @@
-#include "Settings.h"
+#ifndef INITIALIZE_H
+#define INITIALIZE_H
 
-const std::string PICTURE_PATH = SOURCE_PATH + "\\Pictures";
-const std::string SOUND_PATH   = SOURCE_PATH + "\\Sound";
-const std::string FONT_PATH    = SOURCE_PATH + "\\Fonts";
-const std::string ARROW_PATH   = PICTURE_PATH + "\\Arrows";
-const std::string ANIMAL_PATH  = PICTURE_PATH + "\\Animals";
-const std::string PERSON_PATH  = PICTURE_PATH + "\\Person";
+#include "Settings.h"
+#include <SFML/Graphics.hpp>
+
+
+extern const std::string PICTURE_PATH;
+extern const std::string SOUND_PATH;
+extern const std::string FONT_PATH;
+extern const std::string ARROW_PATH;
+extern const std::string ANIMAL_PATH;
+extern const std::string PERSON_PATH;
+extern const std::string CROSSHAIR_PATH;
 
 
 //  Game Values
-int WINDOW_X = 800;
-int WINDOW_Y = 800;
-const std::string WINDOW_TITLE = "Endless Bow Hunter Experience";
+extern int WINDOW_X;
+extern int WINDOW_Y;
+extern bool REDRAW;
+extern const std::string WINDOW_TITLE;
+extern const int personCenterX;
+extern const int personCenterY;
+extern const int arrowCenterX;
+extern const int arrowCenterY;
+extern const int animal_1CenterX;
+extern const int animal_1CenterY;
 
 // Person Values
-int BASE_MOVE_SPEED = 2;
+extern int BASE_MOVE_SPEED;
+
+// Textures
+
+extern sf::Texture personTexture;
+extern sf::Texture crossHairTexture;
+extern sf::Texture arrowTexture;
+extern sf::Texture animalTexture;
+
+// Sprites
+
+extern sf::Sprite person;
+extern sf::Sprite crossHair;
+extern sf::Sprite arrow;
+extern sf::Sprite animal;
+
+// Fonts
+
+extern sf::Font scoreFont;
+
+// Texts
+
+extern sf::Text scoreText;
+
+// Time
+
+extern sf::Clock fpsClock;
+
+class Initialize {
+public:
+	Initialize() {};
+	~Initialize() {};
+	std::string error;
+	bool status;
+} ;
+
+Initialize *initialize();
+#endif
+
+
 
 

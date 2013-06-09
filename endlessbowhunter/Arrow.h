@@ -5,6 +5,7 @@ class Arrow {
 public:
 	Arrow() {};
 	~Arrow() {};
+	void move() {};
 	int damage;
 	int type;
 	sf::Vector2f position;
