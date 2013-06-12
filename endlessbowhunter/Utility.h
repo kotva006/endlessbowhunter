@@ -2,8 +2,9 @@
 #define UTILITY_H
 // Defines the functions for the Utility of the game
 
+//TODO define collision
 void collision(){};
 
-bool random();
+int random();
 
 #endif

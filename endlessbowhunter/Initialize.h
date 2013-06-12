@@ -1,30 +1,34 @@
 #ifndef INITIALIZE_H
 #define INITIALIZE_H
 
-#include "Settings.h"
+#include <vector>
+
 #include <SFML/Graphics.hpp>
 
+#include "Settings.h"
 
-extern const std::string PICTURE_PATH;
-extern const std::string SOUND_PATH;
-extern const std::string FONT_PATH;
-extern const std::string ARROW_PATH;
-extern const std::string ANIMAL_PATH;
-extern const std::string PERSON_PATH;
-extern const std::string CROSSHAIR_PATH;
-
+#define PICTURE_PATH     SOURCE_PATH "/Pictures"
+#define SOUND_PATH       SOURCE_PATH "/Sound"
+#define FONT_PATH        SOURCE_PATH "/Fonts/"
+#define ARROW_PATH       PICTURE_PATH "/Arrows/"
+#define ANIMAL_PATH      PICTURE_PATH "/Animals/"
+#define PERSON_PATH      PICTURE_PATH "/Person/"
+#define CROSSHAIR_PATH   PICTURE_PATH "/Crosshairs/"
 
 //  Game Values
-extern int WINDOW_X;
-extern int WINDOW_Y;
-extern bool REDRAW;
-extern const std::string WINDOW_TITLE;
-extern const int personCenterX;
-extern const int personCenterY;
-extern const int arrowCenterX;
-extern const int arrowCenterY;
-extern const int animal_1CenterX;
-extern const int animal_1CenterY;
+
+#define WINDOW_X 800
+#define WINDOW_Y 800
+#define WINDOW_TITLE "Endless Bow Hunter Experience"
+#define personCenterX 25
+#define personCenterY 25
+#define crossHairCenterX 2.5
+#define crossHairCenterY 2.5
+#define arrowCenterX  5
+#define arrowCenterY 8
+#define animal_1CenterX 25
+#define animal_1CenterY 25
+
 
 // Person Values
 extern int BASE_MOVE_SPEED;
@@ -33,15 +37,15 @@ extern int BASE_MOVE_SPEED;
 
 extern sf::Texture personTexture;
 extern sf::Texture crossHairTexture;
-extern sf::Texture arrowTexture;
-extern sf::Texture animalTexture;
+extern std::vector<sf::Texture> arrowTextures;
+extern std::vector<sf::Texture> animalTextures;
 
 // Sprites
 
 extern sf::Sprite person;
 extern sf::Sprite crossHair;
-extern sf::Sprite arrow;
-extern sf::Sprite animal;
+//extern sf::Sprite arrow;
+//extern sf::Sprite animal;
 
 // Fonts
 

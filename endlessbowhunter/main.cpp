@@ -24,6 +24,7 @@ int main() {
 	window.setMouseCursorVisible(true);
 
 	int moveSpeed = BASE_MOVE_SPEED;
+	bool REDRAW = true;
 	bool canClick = true;
 	int i, j = 0;
 
@@ -66,29 +67,29 @@ int main() {
 		}
 
 		if (canClick && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			arrowVector.push_back(new Arrow((sf::Vector2f) sf::Mouse::getPosition(window),
-			                      person.getPosition(), 1));
+			arrowVector.push_back(new Arrow((sf::Vector2f) 
+				             sf::Mouse::getPosition(window), 1, 1));
 			canClick = false;
 		}
 		
 		if (REDRAW) {
-			if (random()) 
-				animalVector.push_back(new Animal());
+			int randomInt = random();
+			if (randomInt !=-1) {
+				animalVector.push_back(
+				    new Animal(sf::Vector2f(randomInt, 0), 20, 1, 1));
+			}
 
 			REDRAW = false;
 			window.clear();
 
 			for (i = 0; i < arrowVector.size(); i++) {
-				arrowVector[i]->move();
-				arrow.setPosition(arrowVector[i]->position);
-				arrow.setRotation(arrowVector[i]->angle);
-				window.draw(arrow);
+				arrowVector[i]->move(person.getPosition());
+				window.draw(*arrowVector[i]);
 			}
 
 			for (i = 0; i < animalVector.size(); i++) {
 				animalVector[i]->move(person.getPosition());
-				animal.setPosition(animalVector[i]->position);
-				window.draw(animal);
+				window.draw(*animalVector[i]);
 			}
 
 			crossHair.setPosition((sf::Vector2f) sf::Mouse::getPosition(window));
