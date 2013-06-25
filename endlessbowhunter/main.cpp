@@ -26,17 +26,21 @@ int main() {
 	int moveSpeed = BASE_MOVE_SPEED;
 	bool REDRAW = true;
 	bool canClick = true;
+	int score = 0;
 	int i, j = 0;
 
 	std::vector<Arrow*> arrowVector = std::vector<Arrow*>();
 	std::vector<Animal*> animalVector = std::vector<Animal*>();
 
+	Collision *col = new Collision();
+
 	std::cout << RAND_MAX + 1<< std::endl;
-	srand((unsigned) time(0));
+	srand((unsigned int) time(0));
+
 	while(window.isOpen()) {
+
 		sf::Event event;
 		sf::Time elapsed = fpsClock.getElapsedTime();
-
 
 		while (window.pollEvent(event))
         {
@@ -79,8 +83,12 @@ int main() {
 				    new Animal(sf::Vector2f(randomInt, 0), 20, 1, 1));
 			}
 
+			col->collision(&animalVector, &arrowVector);
+
 			REDRAW = false;
 			window.clear();
+
+			scoreText.setString(SCORE_STRING + (std::string) std::to_string(score += col->score)); 
 
 			for (i = 0; i < arrowVector.size(); i++) {
 				arrowVector[i]->move(person.getPosition());

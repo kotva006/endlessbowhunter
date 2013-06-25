@@ -95,6 +95,7 @@ Initialize *initialize() {
 	scoreText.setPosition(5,5);
 	scoreText.setColor(sf::Color::White);
 	scoreText.setCharacterSize(scoreFontSize);
+	scoreText.setString(SCORE_STRING);
 
 
 	init->status = true;

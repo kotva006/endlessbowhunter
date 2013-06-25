@@ -29,6 +29,8 @@
 #define animal_1CenterX 25
 #define animal_1CenterY 25
 
+#define SCORE_STRING "Score: " 
+
 
 // Person Values
 extern int BASE_MOVE_SPEED;
@@ -44,8 +46,6 @@ extern std::vector<sf::Texture> animalTextures;
 
 extern sf::Sprite person;
 extern sf::Sprite crossHair;
-//extern sf::Sprite arrow;
-//extern sf::Sprite animal;
 
 // Fonts
 

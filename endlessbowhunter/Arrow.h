@@ -1,3 +1,5 @@
+#ifndef ARROW_H
+#define ARROW_H
 
 #include <SFML/Graphics.hpp>
 
@@ -15,3 +17,5 @@ public:
 	float angle;
 	sf::Vector2f movement;
 } ;
+
+#endif
