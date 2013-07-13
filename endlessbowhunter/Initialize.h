@@ -29,7 +29,11 @@
 #define animal_1CenterX 25
 #define animal_1CenterY 25
 
-#define SCORE_STRING "Score: " 
+#define SCORE_STRING "Score: "
+#define TIME_STRING  "Time: "
+#define LIVES_STRING "Lives: "
+#define INSTRUCTIONS_STRING "WASD to Move \n Left Click to Shoot \n Press E to Begin"
+#define TITLE_STRING "Endless\nBowhunt\nExperience"
 
 
 // Person Values
@@ -54,6 +58,10 @@ extern sf::Font scoreFont;
 // Texts
 
 extern sf::Text scoreText;
+extern sf::Text timeText;
+extern sf::Text livesText;
+extern sf::Text titleText;
+extern sf::Text instructionsText;
 
 // Time
 

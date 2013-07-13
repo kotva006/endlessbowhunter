@@ -27,6 +27,9 @@ int main() {
 	bool REDRAW = true;
 	bool canClick = true;
 	int score = 0;
+	int count = 0;
+	int gameTime = 0;
+	int lives = 3;
 	int i, j = 0;
 
 	std::vector<Arrow*> arrowVector = std::vector<Arrow*>();
@@ -36,6 +39,8 @@ int main() {
 
 	std::cout << RAND_MAX + 1<< std::endl;
 	srand((unsigned int) time(0));
+
+	bool playGame = false;
 
 	while(window.isOpen()) {
 
@@ -48,9 +53,14 @@ int main() {
                 window.close();
         }
 
-		if ((elapsed.asMilliseconds() % 1000) >= 10) {
+		if ((elapsed.asMilliseconds() % 1000) >= 17) {
 			REDRAW = true;
 			fpsClock.restart();
+			count++;
+			if (count >= 60 && playGame) {
+				count = 0;
+				gameTime++;
+			}
 		}
 
 		if (!canClick && !sf::Mouse::isButtonPressed(sf::Mouse::Left))
@@ -75,20 +85,26 @@ int main() {
 				             sf::Mouse::getPosition(window), 1, 1));
 			canClick = false;
 		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+			playGame = true;
 		
 		if (REDRAW) {
-			int randomInt = random();
-			if (randomInt !=-1) {
+			int randomInt = random(gameTime);
+			if (randomInt !=-1 && playGame) {
 				animalVector.push_back(
-				    new Animal(sf::Vector2f(randomInt, 0), 20, 1, 1));
+				    new Animal(sf::Vector2f(randomInt, 0), gameTime, 1));
 			}
 
 			col->collision(&animalVector, &arrowVector);
+			col->personCollision(&animalVector, person.getPosition());
 
 			REDRAW = false;
 			window.clear();
 
-			scoreText.setString(SCORE_STRING + (std::string) std::to_string(score += col->score)); 
+			scoreText.setString(SCORE_STRING + (std::string) std::to_string(score += col->score));
+			timeText.setString(TIME_STRING + (std::string) std::to_string(gameTime));
+			livesText.setString(LIVES_STRING + (std::string) std::to_string(lives -= col->life));
 
 			for (i = 0; i < arrowVector.size(); i++) {
 				arrowVector[i]->move(person.getPosition());
@@ -102,9 +118,16 @@ int main() {
 
 			crossHair.setPosition((sf::Vector2f) sf::Mouse::getPosition(window));
 
+			if (!playGame) {
+				window.draw(titleText);
+				window.draw(instructionsText);
+			}
+
 		    window.draw(person);
 		    window.draw(crossHair);
 			window.draw(scoreText);
+			window.draw(timeText);
+			window.draw(livesText);
 		    window.display();
 		}
 	}

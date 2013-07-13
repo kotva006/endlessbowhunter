@@ -18,9 +18,10 @@ public:
 	int score;
 	int life;
 	void collision(std::vector<Animal*>*, std::vector<Arrow*>*);
+	void personCollision(std::vector<Animal*>*, sf::Vector2f);
 } ;
 
 
-int random();
+int random(int);
 
 #endif

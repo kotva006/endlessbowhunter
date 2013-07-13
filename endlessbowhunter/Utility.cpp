@@ -34,7 +34,6 @@ void Collision::collision(std::vector<Animal*> *animalVector, std::vector<Arrow*
 						this->score += (*animalVector)[i]->score;
 					    animalVector->erase(animalVector->begin() + i);
 					    arrowVector->erase(arrowVector->begin() + j);
-					    std::cout << "Stuff " << std::endl;
 					}
 			}
 		}
@@ -43,11 +42,39 @@ void Collision::collision(std::vector<Animal*> *animalVector, std::vector<Arrow*
 	return;
 }
 
+void Collision::personCollision(std::vector<Animal*> *animalVector, sf::Vector2f personPos) {
 
-int random() {
+	this->life = 0;
+	int i;
+
+	for (i = 0; i < animalVector->size(); i++) {
+		if (((*animalVector)[i]->getPosition.y + animal_1CenterY) > (personPos.y - personCenterY) &&
+			((*animalVector)[i]->getPosition.x - animal_1CenterX) < 10){}
+	}
+}
+
+
+int random(int inTime) {
 	int random_int = RANDOM_LOWEST + int(RANGE*rand()/(RAND_MAX + 1.0f));
-	if (random_int <= 2) {
-		return RANDOM_SPAWN_POINT_LOWEST + int(SPAWN_RANGE*rand()/(RAND_MAX+1.0f));
+	if (inTime < 60) {
+	    if (random_int <= 2) {
+		    return RANDOM_SPAWN_POINT_LOWEST + int(SPAWN_RANGE*rand()/(RAND_MAX+1.0f));
+	    }
+	}
+	else if (inTime < 120) {
+	    if (random_int <= 2.5) {
+		    return RANDOM_SPAWN_POINT_LOWEST + int(SPAWN_RANGE*rand()/(RAND_MAX+1.0f));
+	    }
+	}
+	else if (inTime < 180) {
+	    if (random_int <= 3.5) {
+		    return RANDOM_SPAWN_POINT_LOWEST + int(SPAWN_RANGE*rand()/(RAND_MAX+1.0f));
+	    }
+	}
+	else {
+	    if (random_int <= 5) {
+		    return RANDOM_SPAWN_POINT_LOWEST + int(SPAWN_RANGE*rand()/(RAND_MAX+1.0f));
+	    }
 	}
 	return -1;
 }

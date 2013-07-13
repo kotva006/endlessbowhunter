@@ -3,7 +3,7 @@
 
 // Movements
 
-int BASE_MOVE_SPEED = 2;
+int BASE_MOVE_SPEED = 3;
 
 //Textures
 
@@ -26,7 +26,14 @@ sf::Font scoreFont;
 // Texts
 
 sf::Text scoreText;
-int scoreFontSize = 20;
+sf::Text timeText;
+sf::Text livesText;
+sf::Text titleText;
+sf::Text instructionsText;
+
+int topFontSize = 20;
+int titleFontSize = 50;
+int instructionFontSize = 20;
 
 // Time
 
@@ -94,9 +101,32 @@ Initialize *initialize() {
 	scoreText.setFont(scoreFont);
 	scoreText.setPosition(5,5);
 	scoreText.setColor(sf::Color::White);
-	scoreText.setCharacterSize(scoreFontSize);
+	scoreText.setCharacterSize(topFontSize);
 	scoreText.setString(SCORE_STRING);
 
+	timeText.setFont(scoreFont);
+	timeText.setPosition(WINDOW_X/2, 5);
+	timeText.setColor(sf::Color::White);
+	timeText.setCharacterSize(topFontSize);
+	timeText.setString(TIME_STRING);
+
+	livesText.setFont(scoreFont);
+	livesText.setPosition(WINDOW_X - 75, 5);
+	livesText.setColor(sf::Color::White);
+	livesText.setCharacterSize(topFontSize);
+	livesText.setString(LIVES_STRING);
+
+	titleText.setFont(scoreFont);
+	titleText.setPosition(WINDOW_X / 2 - 100, 150);
+	titleText.setColor(sf::Color::White);
+	titleText.setCharacterSize(titleFontSize);
+	titleText.setString(TITLE_STRING);
+
+	instructionsText.setFont(scoreFont);
+	instructionsText.setPosition(WINDOW_X / 2 - 80, 400);
+	instructionsText.setColor(sf::Color::White);
+	instructionsText.setCharacterSize(instructionFontSize);
+	instructionsText.setString(INSTRUCTIONS_STRING);
 
 	init->status = true;
 	return init;
