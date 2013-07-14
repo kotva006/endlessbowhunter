@@ -33,7 +33,7 @@ void Animal::setHealth(int inTime) {
 	else if (inTime < 180)
 		this->health = 30;
 	else
-		this->health = (10 * (inTime % 100)) + 30;
+		this->health = (10 * (inTime / 100)) + 30;
 	return;
 }
 

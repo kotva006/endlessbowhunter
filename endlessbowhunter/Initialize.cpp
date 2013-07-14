@@ -30,6 +30,8 @@ sf::Text timeText;
 sf::Text livesText;
 sf::Text titleText;
 sf::Text instructionsText;
+sf::Text gameOver;
+sf::Text finalScore;
 
 int topFontSize = 20;
 int titleFontSize = 50;
@@ -127,6 +129,18 @@ Initialize *initialize() {
 	instructionsText.setColor(sf::Color::White);
 	instructionsText.setCharacterSize(instructionFontSize);
 	instructionsText.setString(INSTRUCTIONS_STRING);
+
+	gameOver.setFont(scoreFont);
+	gameOver.setPosition(WINDOW_X / 2 - 100, 150);
+	gameOver.setColor(sf::Color::White);
+	gameOver.setCharacterSize(titleFontSize);
+	gameOver.setString(END_GAME_STRING);
+
+	finalScore.setFont(scoreFont);
+	finalScore.setPosition(WINDOW_X / 2 - 80, 400);
+	finalScore.setColor(sf::Color::White);
+	finalScore.setCharacterSize(instructionFontSize);
+	finalScore.setString(FINAL_SCORE_STRING);
 
 	init->status = true;
 	return init;

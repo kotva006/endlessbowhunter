@@ -29,16 +29,15 @@ void Collision::collision(std::vector<Animal*> *animalVector, std::vector<Arrow*
 				(*animalVector)[i]->getPosition().y + animal_1CenterY > (*arrowVector)[j]->getPosition().y ){
 					
 					(*animalVector)[i]->health -= (*arrowVector)[j]->damage;
+					arrowVector->erase(arrowVector->begin() + j);
 
 					if ((*animalVector)[i]->health <= 0) {
 						this->score += (*animalVector)[i]->score;
 					    animalVector->erase(animalVector->begin() + i);
-					    arrowVector->erase(arrowVector->begin() + j);
 					}
 			}
 		}
 	}
-
 	return;
 }
 
@@ -48,8 +47,13 @@ void Collision::personCollision(std::vector<Animal*> *animalVector, sf::Vector2f
 	int i;
 
 	for (i = 0; i < animalVector->size(); i++) {
-		if (((*animalVector)[i]->getPosition.y + animal_1CenterY) > (personPos.y - personCenterY) &&
-			((*animalVector)[i]->getPosition.x - animal_1CenterX) < 10){}
+		if ((*animalVector)[i]->getPosition().x - animal_1CenterX < personPos.x &&
+			    (*animalVector)[i]->getPosition().x + animal_1CenterX > personPos.x &&
+				(*animalVector)[i]->getPosition().y - animal_1CenterY < personPos.y &&
+				(*animalVector)[i]->getPosition().y + animal_1CenterY > personPos.y ){
+					animalVector->erase(animalVector->begin() + i);
+					this->life += 1;
+		}
 	}
 }
 

@@ -1,0 +1,6 @@
+This comprises of the things I wish to be added to the game.
+
+1. Animation of the animals and the Player
+2. Make the distance of your arrow depend on how long mouse button held
+3. Add upgrades falling from the sky
+4. Add background

@@ -41,6 +41,7 @@ int main() {
 	srand((unsigned int) time(0));
 
 	bool playGame = false;
+	bool gameOverBool = false;
 
 	while(window.isOpen()) {
 
@@ -86,12 +87,19 @@ int main() {
 			canClick = false;
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && (!playGame || gameOverBool)) {
 			playGame = true;
+			gameOverBool = false;
+			arrowVector.clear();
+			animalVector.clear();
+			lives = 3;
+			gameTime  = 0;
+			score = 0;
+		}
 		
 		if (REDRAW) {
 			int randomInt = random(gameTime);
-			if (randomInt !=-1 && playGame) {
+			if (randomInt !=-1 && playGame && !gameOverBool) {
 				animalVector.push_back(
 				    new Animal(sf::Vector2f(randomInt, 0), gameTime, 1));
 			}
@@ -121,6 +129,17 @@ int main() {
 			if (!playGame) {
 				window.draw(titleText);
 				window.draw(instructionsText);
+			}
+
+			if (lives <= 0) {
+				gameOverBool = true;
+			}
+
+			finalScore.setString(std::to_string(score));
+
+			if (gameOverBool) {
+				window.draw(gameOver);
+				window.draw(finalScore);
 			}
 
 		    window.draw(person);

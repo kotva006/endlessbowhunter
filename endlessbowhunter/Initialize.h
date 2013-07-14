@@ -32,8 +32,10 @@
 #define SCORE_STRING "Score: "
 #define TIME_STRING  "Time: "
 #define LIVES_STRING "Lives: "
-#define INSTRUCTIONS_STRING "WASD to Move \n Left Click to Shoot \n Press E to Begin"
+#define INSTRUCTIONS_STRING "WASD to Move \nLeft Click to Shoot \nPress E to Begin"
 #define TITLE_STRING "Endless\nBowhunt\nExperience"
+#define END_GAME_STRING "You Died :("
+#define FINAL_SCORE_STRING "Final Score: "
 
 
 // Person Values
@@ -62,6 +64,8 @@ extern sf::Text timeText;
 extern sf::Text livesText;
 extern sf::Text titleText;
 extern sf::Text instructionsText;
+extern sf::Text gameOver;
+extern sf::Text finalScore;
 
 // Time
 
